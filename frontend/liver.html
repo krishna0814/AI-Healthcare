@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liver Disease Prediction - AI Healthcare System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>AI Healthcare System</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="diabetes.html">Diabetes</a></li>
+                    <li><a href="heart.html">Heart</a></li>
+                    <li><a href="liver.html" class="active">Liver</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="prediction-page">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-liver"></i> Liver Disease Prediction</h2>
+                    <p>Enter your liver function test results to assess liver disease risk</p>
+                </div>
+
+                <div class="prediction-container">
+                    <div class="form-section">
+                        <form id="liverForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="age">
+                                        <i class="fas fa-birthday-cake"></i> Age (years)
+                                    </label>
+                                    <input type="number" id="age" name="age" 
+                                           min="1" max="120" value="50" required>
+                                    <span class="help-text">Patient age in years</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sex">
+                                        <i class="fas fa-venus-mars"></i> Sex
+                                    </label>
+                                    <select id="sex" name="sex" required>
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                    <span class="help-text">Gender of the patient</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="totalBilirubin">
+                                        <i class="fas fa-vial"></i> Total Bilirubin (mg/dL)
+                                    </label>
+                                    <input type="number" id="totalBilirubin" name="totalBilirubin" 
+                                           min="0" max="20" step="0.1" value="1.0" required>
+                                    <span class="help-text">Total Bilirubin</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="directBilirubin">
+                                        <i class="fas fa-vial"></i> Direct Bilirubin (mg/dL)
+                                    </label>
+                                    <input type="number" id="directBilirubin" name="directBilirubin" 
+                                           min="0" max="10" step="0.1" value="0.3" required>
+                                    <span class="help-text">Direct Bilirubin</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="alkalinePhosphatase">
+                                        <i class="fas fa-flask"></i> Alkaline Phosphatase (U/L)
+                                    </label>
+                                    <input type="number" id="alkalinePhosphatase" name="alkalinePhosphatase" 
+                                           min="50" max="500" value="250" required>
+                                    <span class="help-text">Alkaline Phosphatase level</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="alamineAminotransferase">
+                                        <i class="fas fa-flask"></i> ALT (U/L)
+                                    </label>
+                                    <input type="number" id="alamineAminotransferase" name="alamineAminotransferase" 
+                                           min="0" max="500" value="40" required>
+                                    <span class="help-text">Alamine Aminotransferase (ALT)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="aspartateAminotransferase">
+                                        <i class="fas fa-flask"></i> AST (U/L)
+                                    </label>
+                                    <input type="number" id="aspartateAminotransferase" name="aspartateAminotransferase" 
+                                           min="0" max="500" value="40" required>
+                                    <span class="help-text">Aspartate Aminotransferase (AST)</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="totalProtiens">
+                                        <i class="fas fa-protein"></i> Total Proteins (g/dL)
+                                    </label>
+                                    <input type="number" id="totalProtiens" name="totalProtiens" 
+                                           min="3" max="10" step="0.1" value="7.0" required>
+                                    <span class="help-text">Total Proteins</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="albumin">
+                                        <i class="fas fa-prescription-bottle"></i> Albumin (g/dL)
+                                    </label>
+                                    <input type="number" id="albumin" name="albumin" 
+                                           min="1" max="6" step="0.1" value="3.5" required>
+                                    <span class="help-text">Albumin level</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="albuminAndGlobulinRatio">
+                                        <i class="fas fa-balance-scale"></i> A/G Ratio
+                                    </label>
+                                    <input type="number" id="albuminAndGlobulinRatio" name="albuminAndGlobulinRatio" 
+                                           min="0.5" max="3" step="0.01" value="1.0" required>
+                                    <span class="help-text">Albumin/Globulin Ratio</span>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i> Predict Liver Disease
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    <i class="fas fa-redo"></i> Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="result-section" id="resultSection" style="display: none;">
+                        <div class="result-card">
+                            <h3>Prediction Result</h3>
+                            <div class="result-icon" id="resultIcon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="result-text" id="resultText">
+                                <!-- Result will be displayed here -->
+                            </div>
+                            <div class="confidence-bar">
+                                <div class="confidence-label">
+                                    <span>Confidence Score</span>
+                                    <span id="confidenceValue">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" id="confidenceProgress"></div>
+                                </div>
+                            </div>
+                            <div class="probability-grid" id="probabilityGrid">
+                                <!-- Probability details will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3><i class="fas fa-info-circle"></i> Important Information</h3>
+                    <ul>
+                        <li>Normal Total Bilirubin: 0.2 mg/dL1-1.</li>
+                        <li>Normal ALT: 7-56 U/L</li>
+                        <li>Normal AST: 10-40 U/L</li>
+                        <li>Normal Albumin: 3.5-5.5 g/dL</li>
+                        <li>Normal A/G Ratio: 0.8-2.0</li>
+                    </ul>
+                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> This is an AI prediction system and should not replace professional medical advice.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI Healthcare System. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: This is for educational purposes only. Please consult a medical professional for actual medical advice.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Liver disease prediction form handling
+        document.getElementById('liverForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                age: document.getElementById('age').value,
+                sex: document.getElementById('sex').value,
+                totalBilirubin: document.getElementById('totalBilirubin').value,
+                directBilirubin: document.getElementById('directBilirubin').value,
+                alkalinePhosphatase: document.getElementById('alkalinePhosphatase').value,
+                alamineAminotransferase: document.getElementById('alamineAminotransferase').value,
+                aspartateAminotransferase: document.getElementById('aspartateAminotransferase').value,
+                totalProtiens: document.getElementById('totalProtiens').value,
+                albumin: document.getElementById('albumin').value,
+                albuminAndGlobulinRatio: document.getElementById('albuminAndGlobulinRatio').value
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/predict/liver', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error connecting to prediction server. Make sure the backend is running.');
+            }
+        });
+
+        function displayResult(data) {
+            const resultSection = document.getElementById('resultSection');
+            const resultIcon = document.getElementById('resultIcon');
+            const resultText = document.getElementById('resultText');
+            const confidenceValue = document.getElementById('confidenceValue');
+            const confidenceProgress = document.getElementById('confidenceProgress');
+            const probabilityGrid = document.getElementById('probabilityGrid');
+
+            resultSection.style.display = 'block';
+
+            if (data.prediction === 1) {
+                resultIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                resultIcon.className = 'result-icon danger';
+                resultText.innerHTML = `<h4>${data.result}</h4><p>Based on the analysis of your inputs, the system predicts a high risk of liver disease.</p>`;
+            } else if (data.prediction === 2) {
+                resultIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                resultIcon.className = 'result-icon success';
+                resultText.innerHTML = `<h4>${data.result}</h4><p>Based on the analysis of your inputs, the system predicts no signs of liver disease.</p>`;
+            } else {
+                resultIcon.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+                resultIcon.className = 'result-icon warning';
+                resultText.innerHTML = `<h4>${data.result}</h4><p>${data.message || 'Please run the training script first.'}</p>`;
+            }
+
+            confidenceValue.textContent = data.confidence + '%';
+            confidenceProgress.style.width = data.confidence + '%';
+            confidenceProgress.className = data.prediction === 1 ? 'progress danger' : 'progress success';
+
+            probabilityGrid.innerHTML = `
+                <div class="probability-item">
+                    <span class="prob-label">No Liver Disease</span>
+                    <span class="prob-value">${data.probability?.no_disease || 0}%</span>
+                </div>
+                <div class="probability-item">
+                    <span class="prob-label">Liver Disease</span>
+                    <span class="prob-value">${data.probability?.liver_disease || 0}%</span>
+                </div>
+            `;
+
+            // Scroll to result
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+

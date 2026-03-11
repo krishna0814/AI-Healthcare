@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction - AI Healthcare System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>AI Healthcare System</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="diabetes.html">Diabetes</a></li>
+                    <li><a href="heart.html" class="active">Heart</a></li>
+                    <li><a href="liver.html">Liver</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="prediction-page">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-heart"></i> Heart Disease Prediction</h2>
+                    <p>Enter your cardiovascular health information to assess heart disease risk</p>
+                </div>
+
+                <div class="prediction-container">
+                    <div class="form-section">
+                        <form id="heartForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="age">
+                                        <i class="fas fa-birthday-cake"></i> Age (years)
+                                    </label>
+                                    <input type="number" id="age" name="age" 
+                                           min="1" max="120" value="50" required>
+                                    <span class="help-text">Patient age in years</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sex">
+                                        <i class="fas fa-venus-mars"></i> Sex
+                                    </label>
+                                    <select id="sex" name="sex" required>
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                    <span class="help-text">Gender of the patient</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="chestPainType">
+                                        <i class="fas fa-heart-broken"></i> Chest Pain Type
+                                    </label>
+                                    <select id="chestPainType" name="chestPainType" required>
+                                        <option value="0">Typical Angina</option>
+                                        <option value="1">Atypical Angina</option>
+                                        <option value="2">Non-anginal Pain</option>
+                                        <option value="3">Asymptomatic</option>
+                                    </select>
+                                    <span class="help-text">Type of chest pain</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="restingBP">
+                                        <i class="fas fa-tachometer-alt"></i> Resting Blood Pressure (mm Hg)
+                                    </label>
+                                    <input type="number" id="restingBP" name="restingBP" 
+                                           min="80" max="250" value="120" required>
+                                    <span class="help-text">Resting blood pressure</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cholesterol">
+                                        <i class="fas fa-tint"></i> Cholesterol (mg/dL)
+                                    </label>
+                                    <input type="number" id="cholesterol" name="cholesterol" 
+                                           min="100" max="400" value="200" required>
+                                    <span class="help-text">Serum cholesterol</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fastingBS">
+                                        <i class="fas fa-blood"></i> Fasting Blood Sugar
+                                    </label>
+                                    <select id="fastingBS" name="fastingBS" required>
+                                        <option value="0">Less than 120 mg/dL</option>
+                                        <option value="1">Greater than 120 mg/dL</option>
+                                    </select>
+                                    <span class="help-text">Fasting blood sugar > 120 mg/dL</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="restingECG">
+                                        <i class="fas fa-wave-square"></i> Resting ECG
+                                    </label>
+                                    <select id="restingECG" name="restingECG" required>
+                                        <option value="0">Normal</option>
+                                        <option value="1">ST-T wave abnormality</option>
+                                        <option value="2">Left ventricular hypertrophy</option>
+                                    </select>
+                                    <span class="help-text">Resting electrocardiographic results</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="maxHR">
+                                        <i class="fas fa-heartbeat"></i> Maximum Heart Rate
+                                    </label>
+                                    <input type="number" id="maxHR" name="maxHR" 
+                                           min="60" max="220" value="150" required>
+                                    <span class="help-text">Maximum heart rate achieved</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exerciseAngina">
+                                        <i class="fas fa-running"></i> Exercise-Induced Angina
+                                    </label>
+                                    <select id="exerciseAngina" name="exerciseAngina" required>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <span class="help-text">Exercise-induced angina</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="oldpeak">
+                                        <i class="fas fa-chart-line"></i> ST Depression
+                                    </label>
+                                    <input type="number" id="oldpeak" name="oldpeak" 
+                                           min="0" max="10" step="0.1" value="1.0" required>
+                                    <span class="help-text">ST depression induced by exercise</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ST_Slope">
+                                        <i class="fas fa-arrow-up"></i> ST Segment Slope
+                                    </label>
+                                    <select id="ST_Slope" name="ST_Slope" required>
+                                        <option value="0">Upsloping</option>
+                                        <option value="1">Flat</option>
+                                        <option value="2">Downsloping</option>
+                                    </select>
+                                    <span class="help-text">Slope of peak exercise ST segment</span>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i> Predict Heart Disease
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    <i class="fas fa-redo"></i> Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="result-section" id="resultSection" style="display: none;">
+                        <div class="result-card">
+                            <h3>Prediction Result</h3>
+                            <div class="result-icon" id="resultIcon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="result-text" id="resultText">
+                                <!-- Result will be displayed here -->
+                            </div>
+                            <div class="confidence-bar">
+                                <div class="confidence-label">
+                                    <span>Confidence Score</span>
+                                    <span id="confidenceValue">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" id="confidenceProgress"></div>
+                                </div>
+                            </div>
+                            <div class="probability-grid" id="probabilityGrid">
+                                <!-- Probability details will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3><i class="fas fa-info-circle"></i> Important Information</h3>
+                    <ul>
+                        <li>Normal blood pressure: Less than 120/80 mm Hg</li>
+                        <li>Normal cholesterol: Less than 200 mg/dL</li>
+                        <li>Normal resting heart rate: 60-100 bpm</li>
+                        <li>Maximum heart rate varies by age (220 - age)</li>
+                    </ul>
+                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> This is an AI prediction system and should not replace professional medical advice.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI Healthcare System. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: This is for educational purposes only. Please consult a medical professional for actual medical advice.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Heart disease prediction form handling
+        document.getElementById('heartForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                age: document.getElementById('age').value,
+                sex: document.getElementById('sex').value,
+                chestPainType: document.getElementById('chestPainType').value,
+                restingBP: document.getElementById('restingBP').value,
+                cholesterol: document.getElementById('cholesterol').value,
+                fastingBS: document.getElementById('fastingBS').value,
+                restingECG: document.getElementById('restingECG').value,
+                maxHR: document.getElementById('maxHR').value,
+                exerciseAngina: document.getElementById('exerciseAngina').value,
+                oldpeak: document.getElementById('oldpeak').value,
+                ST_Slope: document.getElementById('ST_Slope').value
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/predict/heart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error connecting to prediction server. Make sure the backend is running.');
+            }
+        });
+
+        function displayResult(data) {
+            const resultSection = document.getElementById('resultSection');
+            const resultIcon = document.getElementById('resultIcon');
+            const resultText = document.getElementById('resultText');
+            const confidenceValue = document.getElementById('confidenceValue');
+            const confidenceProgress = document.getElementById('confidenceProgress');
+            const probabilityGrid = document.getElementById('probabilityGrid');
+
+            resultSection.style.display = 'block';
+
+            if (data.prediction === 1) {
+                resultIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                resultIcon.className = 'result-icon danger';
+                resultText.innerHTML = `<h4>${data.result}</h4><p>Based on the analysis of your inputs, the system predicts a high risk of heart disease.</p>`;
+            } else if (data.prediction === 0) {
+                resultIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                resultIcon.className = 'result-icon success';
+                resultText.innerHTML = `<h4>${data.result}</h4><p>Based on the analysis of your inputs, the system predicts no signs of heart disease.</p>`;
+            } else {
+                resultIcon.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+                resultIcon.className = 'result-icon warning';
+                resultText.innerHTML = `<h4>${data.result}</h4><p>${data.message || 'Please run the training script first.'}</p>`;
+            }
+
+            confidenceValue.textContent = data.confidence + '%';
+            confidenceProgress.style.width = data.confidence + '%';
+            confidenceProgress.className = data.prediction === 1 ? 'progress danger' : 'progress success';
+
+            probabilityGrid.innerHTML = `
+                <div class="probability-item">
+                    <span class="prob-label">No Heart Disease</span>
+                    <span class="prob-value">${data.probability?.negative || 0}%</span>
+                </div>
+                <div class="probability-item">
+                    <span class="prob-label">Heart Disease</span>
+                    <span class="prob-value">${data.probability?.positive || 0}%</span>
+                </div>
+            `;
+
+            // Scroll to result
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
